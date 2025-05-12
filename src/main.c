@@ -1,3 +1,4 @@
+
 #include "header.h"
 
 void mainMenu(struct User u)
@@ -28,6 +29,7 @@ void mainMenu(struct User u)
     case 3:
         // student TODO : add your **Check the details of existing accounts** function
         // here
+        checkAccountDetails(u);
         break;
     case 4:
         checkAllAccounts(u);
@@ -35,14 +37,17 @@ void mainMenu(struct User u)
     case 5:
         // student TODO : add your **Make transaction** function
         // here
+        makeTransaction(u);
         break;
     case 6:
         // student TODO : add your **Remove existing account** function
         // here
+        removeAccount(u);
         break;
     case 7:
         // student TODO : add your **Transfer owner** function
         // here
+        transferOwnership(u);
         break;
     case 8:
         exit(1);
@@ -83,6 +88,8 @@ void initMenu(struct User *u)
         case 2:
             // student TODO : add your **Registration** function
             // here
+            registerMenu(u->name, u->password);
+            u->id = getUserId() - 1; // Get the ID that was just assigned
             r = 1;
             break;
         case 3:
@@ -97,7 +104,7 @@ void initMenu(struct User *u)
 int main()
 {
     struct User u;
-    
+
     initMenu(&u);
     mainMenu(u);
     return 0;
